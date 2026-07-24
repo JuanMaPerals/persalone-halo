@@ -54,7 +54,7 @@ Pruebas ejecutadas antes de este congelamiento: Companion 18/18, pruebas focaliz
 | Monako/Raven físico | 0% | SDK/API/hardware/permiso según cada plataforma |
 | n8n dedicado a Runtime | 0% | Diseño aprobado, datos permitidos y pruebas privadas |
 | GPU de evaluación/entrenamiento | 0% | Endpoint autorizado, presupuesto y entorno aislado |
-| Repositorio público dedicado | 0% | Repo nuevo, revisión de licencias, CI verde y release manifiesto |
+| Repositorio público dedicado | 1/5 — 20% | Baseline público creado; faltan contrato, código seleccionado, CI verde y release manifiesto |
 
 ## 2. Diagrama de infraestructura
 
@@ -123,7 +123,7 @@ flowchart TB
 
 El directorio actual `digital-twin-lab` no debe publicarse por herencia de otro árbol Git. Antes de un push se crea el repositorio dedicado y se auditan licencias, secreto, historial y dependencias. La copia local aprobada será canónica; GitHub solo recibirá commits verdes.
 
-Hechos Git verificados: el root actual hereda `JuanMaPerals/Traductor-pro-universal`, rama `codex/windows-universal-v2`, HEAD `da23dc83ed903ad0c3a52938613c405eafd428f5`, sin divergencia conocida. `digital-twin-lab` contiene 271 archivos pero 0 tracked en un repositorio propio. No existe todavía un remoto dedicado local `persalone-halo`; por tanto, publicación operativa: **0/5 (0%)**.
+Hechos Git verificados: el root heredado continúa en `JuanMaPerals/Traductor-pro-universal`, rama `codex/windows-universal-v2`, HEAD `da23dc83ed903ad0c3a52938613c405eafd428f5`, sin divergencia conocida. `digital-twin-lab` contiene 271 archivos y 0 tracked en un repositorio propio. El 24-07-2026 se creó el repositorio público dedicado `JuanMaPerals/persalone-halo` con un baseline documental Apache-2.0, commit inicial `6d81e4c5eb79c4a32fa22925ee8a41fadd6e1da7`; gate: **1/5 (20%)**. No se ha copiado todavía código del árbol heredado.
 
 ## 4. Flujo de datos
 
