@@ -1,0 +1,41 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+secrets/
+
+# Private evidence and user data
+evidence/private/
+audio/
+transcripts/
+voice-profiles/
+*.wav
+*.pcm
+*.lc3
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# Node
+node_modules/
+dist/
+coverage/
+.vite/
+
+# Tooling and OS
+.tools/
+.cache/
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+*.log
+
