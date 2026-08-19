@@ -1,6 +1,6 @@
-name: persalone_mobile
-description: Minimal Android and iOS shell for the PersalOne Halo runtime.
-version: 0.1.0+1
+name: persalone_audio_adapters
+description: Canonical Android-first host audio adapters for PersalOne HORIZON.
+version: 0.1.0
 publish_to: none
 environment:
   sdk: ^3.6.0
@@ -9,9 +9,7 @@ dependencies:
   flutter:
     sdk: flutter
   persalone_contracts:
-    path: ../../packages/contracts
-  persalone_audio_adapters:
-    path: ../../packages/audio_adapters
+    path: ../contracts
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -17,6 +17,7 @@ flutter pub get
 flutter analyze
 (cd packages/contracts && dart test)
 (cd packages/halo_adapter && flutter test)
+(cd packages/audio_adapters && flutter test)
 (cd apps/mobile && flutter test)
 bash tooling/preflight.sh --all
 ```
