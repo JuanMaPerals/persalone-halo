@@ -1,0 +1,18 @@
+name: persalone_mobile
+description: Minimal Android and iOS shell for the PersalOne Halo runtime.
+version: 0.1.0+1
+publish_to: none
+environment:
+  sdk: ^3.6.0
+resolution: workspace
+dependencies:
+  flutter:
+    sdk: flutter
+  persalone_contracts:
+    path: ../../packages/contracts
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  lints: ^5.1.1
+flutter:
+  uses-material-design: true

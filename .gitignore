@@ -33,6 +33,7 @@ coverage/
 # Tooling and OS
 .tools/
 .cache/
+.dart_tool/
 .idea/
 .vscode/
 .DS_Store

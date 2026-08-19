@@ -1,0 +1,10 @@
+name: persalone_contracts
+description: Canonical versioned contracts for PersalOne Halo runtime.
+version: 0.1.0
+publish_to: none
+environment:
+  sdk: ^3.6.0
+resolution: workspace
+dev_dependencies:
+  lints: ^5.1.1
+  test: ^1.25.15
