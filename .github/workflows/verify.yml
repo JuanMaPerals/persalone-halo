@@ -31,6 +31,7 @@ jobs:
       - name: Unit tests
         run: |
           (cd packages/contracts && dart test)
+          (cd packages/halo_adapter && flutter test)
           (cd apps/mobile && flutter test)
       - name: Repository preflight
         run: bash tooling/preflight.sh --all
