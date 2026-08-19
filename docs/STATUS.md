@@ -1,29 +1,29 @@
-# Verified gate status
+# Estado verificable de gates
 
-**Baseline date:** 2026-07-24  
-**Rule:** percentages count passed acceptance gates, not code volume.
+**Actualizado:** 2026-08-19
 
-| Workstream | Passed / total | Status |
-|---|---:|---|
-| Repository baseline | 1/5 | Governance and architecture prepared; CI/source/release still pending |
-| Companion | 5/8 | Loopback, token and tests exist; canonical contract/runtime/E2E pending |
-| ES↔EN on PC | 4/7 | Existing audio/realtime code and tests; reproducible audible acceptance pending |
-| Halo physical | 0/8 | No physical microphone, speaker, BLE audio, duplex or endurance evidence |
-| Voice identity | 0/5 | Consent, license, similarity, latency and revocation gates pending |
-| Runtime n8n operations | 0/8 | Architecture only; no deployment authorised |
-| Hetzner API/CLI access | 1/4 | Official CLI installed and verified; read-only token/context/inventory pending |
+> La regla sigue siendo la misma: el estado se basa en gates de aceptación, no en volumen de código. `PREPARED` no equivale a `MEASURED`.
 
-## Verified test results in the audited source tree
+| Gate | Estado en la rama G0/G1 | Evidencia actual | Límite explícito |
+|---|---|---|---|
+| G0 — gobernanza automatizable | `PREPARED` | `CONTRIBUTING.md` y `SECURITY.md` corregidos; preflight versionado; workflows de verificación, secret scan y SBOM. | No confirma protección de `main`, reporte privado ni características de GitHub que requieren acción del propietario. |
+| G1 — Flutter y contratos | `PREPARED` | Shell Android/iOS generado; contratos Dart versionados; análisis y pruebas locales verdes. | No hay adaptador Halo, BLE, audio, proveedor, agente ni OTA. |
+| G2 — conectividad Halo | `BLOCKED` | No se ha añadido código de conexión o discovery. | Requiere versiones fijadas de firmware/SDK y ensayos físicos. |
+| G3 — entrada aislada | `BLOCKED` | No hay micrófono ni transporte de captura. | Ninguna captura física está acreditada. |
+| G4 — salida aislada | `BLOCKED` | No hay playback ni confirmación humana. | Ninguna salida física está acreditada. |
+| G5 — conversación | `BLOCKED` | No hay STT, MT, TTS ni proveedor. | No se declara traducción audible. |
+| G6 — duplex/AEC | `BLOCKED` | No hay rutas simultáneas ni ensayos. | No se declara full-duplex, barge-in o AEC. |
+| G7 — agentes | `BLOCKED` | No hay runtime ni manifiestos de agentes. | No se habilitan herramientas, BLE, audio ni Lua para agentes. |
+| G8 — release móvil | `BLOCKED` | No hay firma, despliegue ni flujo de tiendas. | No se publica ni se automatiza release. |
 
-- Companion: 18/18.
-- Halo contracts/emulation: 106/106.
-- Wearable contracts: 32/32.
-- Realtime translation protocol: 13/13.
-- Bidirectional CLI: 13/13.
-- Regulatory Watch offline: 31/31, but it is a separate project and not Runtime Ops.
+## Validación local de G1
 
-These results do not prove physical Halo audio or a finished product.
+La rama ejecutó correctamente `flutter analyze`, dos pruebas de contratos (`dart test` en `packages/contracts`) y dos pruebas de widgets (`flutter test` en `apps/mobile`). El workflow CI todavía requiere su primera ejecución en GitHub antes de poder seleccionarse como check obligatorio.
 
-## Immediate gate
+## Acciones manuales pendientes
 
-Create one canonical, versioned contract for Python and TypeScript; then move the real PC audio/translation runtime behind the local Companion. The deterministic fixture and the future physical Halo adapter must implement that same contract.
+El propietario debe completar y verificar los ajustes indicados en [GITHUB_MANUAL_SETTINGS.md](GITHUB_MANUAL_SETTINGS.md). Hasta entonces, no se afirma que `main` esté protegida ni que exista un canal privado de vulnerabilidades.
+
+## Proximidad permitida
+
+Tras la revisión y merge de G0/G1, el próximo trabajo debe comenzar con una decisión explícita sobre G2. No se habilitan integración BLE, audio, proveedor, agente ni OTA sin una autorización posterior.

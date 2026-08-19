@@ -1,39 +1,35 @@
-# Contributing to PersalOne Digital Twin Lab
+# Contribuir a PersalOne Halo
 
-Thank you for helping test, document and improve the laboratory. This project must distinguish a visual simulation from a physically evidenced result at all times. Contributions that make that boundary clearer are especially valuable.
+PersalOne Halo es un runtime móvil local-first en fase temprana. La primera validación prevista es traducción bidireccional ES↔EN; el repositorio no declara aún una ruta física Halo, BLE, audio, full-duplex, AEC, proveedores, agentes ni OTA implementados.
 
-## Before opening a contribution
+## Límites de evidencia y privacidad
 
-1. Read [the community-testing guide](docs/community-testing.md), [SECURITY.md](SECURITY.md) and [the code of conduct](CODE_OF_CONDUCT.md).
-2. Do not include credentials, API keys, private media, personal data, audio, transcripts, device identifiers or proprietary manufacturer material.
-3. Keep claims evidence-backed. A scenario is not a hardware validation; label unsupported work as `Preview data` or `Unavailable`.
-4. Do not alter the package privacy setting or add publishing automation.
+Toda contribución debe diferenciar de forma visible entre `SIMULATED`, `PREPARED`, `MEASURED`, `BLOCKED` y `FAILED`. Una simulación, un ACK de transporte o una afirmación del fabricante no justifican el estado `MEASURED`.
 
-The repository currently has no public software licence. The project owner must select and commit one before accepting external code contributions or making the repository public. Until then, these instructions support internal review and community-test preparation only; no permission is implied by this file.
+No incluyas credenciales, claves API, certificados, archivos `.env`, audio privado, transcripciones, perfiles de voz, identificadores de dispositivo, datos personales ni materiales propietarios de terceros. El repositorio usa Apache-2.0 exclusivamente para código propio; las licencias de SDKs, modelos, voces, datasets y activos de terceros permanecen separadas.
 
-## Local workflow
+## Flujo local
 
-Use the pinned Node and npm versions from `.node-version` and `package.json`. Run these commands from the project root:
+Instala la versión de Flutter fijada por `.github/workflows/verify.yml`, después ejecuta desde la raíz:
 
-```powershell
-npm ci
-npm run community:check
-npm run community:sync
+```bash
+flutter pub get
+flutter analyze
+(cd packages/contracts && dart test)
+(cd apps/mobile && flutter test)
+bash tooling/preflight.sh --all
 ```
 
-`community:check` runs documentation policy checks, the local test suite and a production build. `community:sync` is only a dry-run: it does not invoke git, contact a remote, create a release or publish a package.
+El preflight rechaza rutas sensibles y detecta indicadores comunes de secretos en archivos trackeados. No sustituye una revisión humana ni un escáner de secretos gestionado.
 
-## Change expectations
+## Reglas de cambio
 
-- Keep UI language and truth-boundary labels consistent with the current product contract.
-- Add or update tests for behavioral changes. Avoid tests that require a microphone, hardware, credentials or network access.
-- Explain privacy, safety and evidence implications in the pull request.
-- Keep generated artifacts, build outputs and local logs out of changes.
-- Make commits focused and write a clear pull-request description with the test commands you ran and their results.
+Los cambios deben ser pequeños, probados y revisables. Trabaja siempre en una rama; no realices push directo a `main`. Actualiza pruebas y documentación con cualquier cambio de comportamiento o contrato. Antes de abrir un PR, ejecuta análisis estático, pruebas y preflight.
 
-## Review and release boundary
+Los contratos de `packages/contracts` no pueden depender de Flutter, SDKs de dispositivos, proveedores ni secretos. Un adaptador que no declare una capacidad verificable debe bloquearla por defecto. Ningún agente o proveedor obtiene acceso a BLE, audio, Lua, OTA o credenciales por el mero hecho de estar instalado.
 
-Every external repository needs branch protection, reviewed maintainers and GitHub private vulnerability reporting enabled before it accepts public work. Only an authorized maintainer may deliberately use the separately guarded `community:sync:publish` command. It is a normal non-force `git push`; it does not make a GitHub release or publish to npm.
+## Revisión y divulgación de seguridad
 
-When in doubt about a possible vulnerability or sensitive material, stop and follow [SECURITY.md](SECURITY.md) instead of opening a public issue.
+La configuración de protección de `main`, reporte privado de vulnerabilidades y otros ajustes de GitHub requiere acción del propietario. Consulta [los ajustes manuales pendientes](docs/GITHUB_MANUAL_SETTINGS.md) y no declares que estén activos hasta verificarlo.
 
+No abras una incidencia pública con información sensible o un exploit reproducible. Solicita al propietario una ruta privada y sigue [SECURITY.md](SECURITY.md).

@@ -4,17 +4,18 @@ Open, evidence-first wearable translation runtime. Halo is the first physical ta
 
 ## Current status
 
-This repository starts with governance and the approved architecture. It does **not** yet claim physical Halo audio, full duplex, echo cancellation, latency, battery life or voice preservation.
+This repository contains the **G0/G1 foundation**: governance documentation, a minimal Flutter Android/iOS shell, versioned Dart contracts, local checks and CI definitions. These assets are `PREPARED`, not physical evidence. The repository does **not** claim Halo BLE, microphone capture, speaker playback, audio translation, full-duplex, echo cancellation, latency, battery life, voice preservation, providers, agents or OTA.
 
-| Gate | Verified progress |
-|---|---:|
-| Dedicated repository | 1/5 — 20% after this baseline is published |
-| Local Companion | 5/8 — 62.5% in the audited source tree |
-| Audible ES↔EN on PC | 4/7 — 57% in the audited source tree |
-| Physical Halo | 0/8 — 0% |
-| Consented voice identity | 0/5 — 0% |
+| Gate | Estado verificable |
+|---|---|
+| G0 — gobernanza automatizable | `PREPARED`: preflight, CI, secret scan and SBOM workflows are defined; branch protection and private reporting still require owner action. |
+| G1 — Flutter y contratos | `PREPARED`: Android/iOS project skeleton, canonical Dart contracts and local tests exist; no device adapter or physical capability is enabled. |
+| G2 — conectividad Halo | `BLOCKED`: no BLE integration in this repository. |
+| G3–G6 — audio y conversación | `BLOCKED`: no microphone, speaker, provider, full-duplex or AEC path is enabled. |
+| G7 — agentes | `BLOCKED`: no agent runtime is enabled. |
+| G8 — release móvil | `BLOCKED`: no store or release workflow is enabled. |
 
-The source modules will move here only after the canonical wearable contract is approved and the full release gate is green.
+See [the G0/G1 architecture audit](docs/ARCHITECTURE_AUDIT_2026-08-19.md), [the current gate status](docs/STATUS.md), and [the manual GitHub settings](docs/GITHUB_MANUAL_SETTINGS.md) before contributing.
 
 ## Architecture
 

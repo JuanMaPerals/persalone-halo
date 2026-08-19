@@ -1,29 +1,28 @@
-# Security policy
+# Política de seguridad
 
-## Supported code
+## Código soportado
 
-| Version line | Security fixes |
+| Línea de versión | Correcciones de seguridad |
 | --- | --- |
-| `0.3.x` release candidates | Best-effort while the community preview is active |
-| Earlier versions | No |
+| `0.3.x` release candidates | Mejor esfuerzo durante la vista previa comunitaria |
+| Versiones anteriores | No |
 
-This repository is a local-first visual laboratory. It does not claim a production audio path, hardware transport, clinical capability or a cloud-connected service. Those boundaries do not remove the need to report a security or privacy issue.
+Este repositorio contiene una base local-first de PersalOne Halo. No declara todavía una ruta de audio de producción, transporte físico Halo, proveedor cloud, servicio conectado ni capacidad clínica. Estos límites no reducen la obligación de reportar un problema de seguridad o privacidad.
 
-## Reporting a vulnerability
+## Reportar una vulnerabilidad
 
-Do not open a public issue or include an exploit, credentials, audio, transcripts, personal data, device identifiers or customer information in a pull request.
+No abras una incidencia pública ni incluyas exploits, credenciales, audio, transcripciones, datos personales, identificadores de dispositivos o información de clientes en una pull request.
 
-Once the target GitHub repository exists, report privately through its GitHub Security Advisory reporting channel. Until that channel is enabled, ask the project owner for a private reporting route before sharing technical details. The repository must enable private vulnerability reporting before it accepts public contributions.
+El repositorio existe, pero el reporte privado de vulnerabilidades de GitHub sigue pendiente de activación y verificación por el propietario. Consulta [los ajustes manuales de GitHub](docs/GITHUB_MANUAL_SETTINGS.md). Hasta que el estado se compruebe, solicita al propietario una ruta privada antes de compartir detalles técnicos. Si la función de GitHub no está disponible, el propietario debe publicar una dirección privada controlada en este documento.
 
-Include a concise description, affected revision, reproduction steps, impact, and any safe mitigation. Sanitise all supporting material; a minimal synthetic proof of concept is preferred over production data.
+Incluye una descripción concisa, revisión afectada, pasos de reproducción, impacto y mitigación segura. Sanea todo material de apoyo; un proof of concept sintético y mínimo es preferible a datos reales.
 
-## Handling expectations
+## Expectativas de tratamiento
 
-Maintainers will acknowledge a valid report through the private channel, triage it, and coordinate a fix and disclosure timing with the reporter. Do not disclose a suspected issue publicly until a maintainer confirms that it is safe to do so. If there is immediate risk to people, privacy or systems, stop testing and use the fastest available private escalation route.
+Los mantenedores confirmarán un reporte válido por el canal privado, lo clasificarán y coordinarán la corrección y el momento de divulgación. No divulgues una vulnerabilidad sospechada hasta que un mantenedor confirme que es seguro hacerlo. Si existe riesgo inmediato para personas, privacidad o sistemas, detén las pruebas y utiliza la vía privada más rápida disponible.
 
-## Scope examples
+## Ejemplos de alcance
 
-In scope include local-host exposure, file-path handling, package or build integrity, secrets handling, unsafe capability boundaries and privacy regressions. Hardware, provider and browser behavior outside this repository can still be reported when the repository's integration or documentation causes unsafe assumptions.
+Están dentro de alcance la exposición local, manejo de rutas de archivo, integridad de paquetes o build, secretos, límites de capacidades y regresiones de privacidad. El comportamiento de hardware, proveedor o navegador externo también puede reportarse cuando la integración o documentación de este repositorio introduce una suposición insegura.
 
-Out of scope are requests to treat simulation output as a medical, legal, safety or physical-device certification. Those claims are intentionally not supported by this release candidate.
-
+No están dentro de alcance las peticiones para tratar simulación como certificación médica, jurídica, de seguridad o de dispositivo físico. Esas afirmaciones no son compatibles con esta fase del proyecto.
