@@ -1,5 +1,6 @@
 library;
 
+export 'src/audio.dart';
 export 'src/capability.dart';
 export 'src/device_adapter.dart';
 export 'src/runtime_error.dart';
