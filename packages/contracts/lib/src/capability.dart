@@ -3,6 +3,10 @@ import 'truth_label.dart';
 /// Stable identifiers for capabilities that must be declared by a device or
 /// fixture before the runtime can attempt to use them.
 enum Capability {
+  bleConnection,
+  deviceIdentity,
+  luaTransport,
+  userDataTransport,
   display,
   microphoneCapture,
   speakerPlayback,

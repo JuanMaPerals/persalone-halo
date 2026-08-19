@@ -16,6 +16,7 @@ Instala la versi√≥n de Flutter fijada por `.github/workflows/verify.yml`, despu√
 flutter pub get
 flutter analyze
 (cd packages/contracts && dart test)
+(cd packages/halo_adapter && flutter test)
 (cd apps/mobile && flutter test)
 bash tooling/preflight.sh --all
 ```

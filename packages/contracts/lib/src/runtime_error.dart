@@ -7,6 +7,13 @@ enum RuntimeErrorCode {
   staleStreamEpoch,
   sessionClosed,
   invalidContract,
+  discoveryFailed,
+  deviceNotSelected,
+  connectionFailed,
+  pairingRequired,
+  deviceNotReady,
+  protocolRejected,
+  transportUnavailable,
 }
 
 /// A contract-level failure that is safe to expose to the user interface.
