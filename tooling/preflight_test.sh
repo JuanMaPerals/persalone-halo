@@ -38,6 +38,35 @@ cp "$source_script" "$repo/tooling/preflight.sh"
   git add safe.txt
   bash tooling/preflight.sh
 
+  git commit -qm 'safe update'
+
+  mkdir -p 'odd paths'
+  space_path='odd paths/name with spaces.txt'
+  tab_path=$(printf 'odd paths/name\twith\ttabs.txt')
+  newline_path=$(printf 'odd paths/name\nwith\nnewlines.txt')
+  unicode_path="odd paths/unicode-caf$(printf '\303\251').txt"
+  dash_path='--leading-dash.txt'
+  for path in "$space_path" "$tab_path" "$newline_path" "$unicode_path" "$dash_path"; do
+    printf '%s\n' 'safe odd path' > "$path"
+    git add -- "$path"
+  done
+  bash tooling/preflight.sh
+  bash tooling/preflight.sh --all
+  git commit -qm 'odd paths'
+
+  git mv -- "$space_path" 'odd paths/renamed path.txt'
+  git rm -- "$tab_path"
+  bash tooling/preflight.sh
+
+  printf '%s\n' "$blocked_marker" > "$newline_path"
+  git add -- "$newline_path"
+  printf '%s\n' 'clean working tree again' > "$newline_path"
+
+  if bash tooling/preflight.sh >/tmp/preflight-newline.out 2>/tmp/preflight-newline.err; then
+    printf '%s\n' 'Expected newline-path staged secret scan to fail.' >&2
+    exit 1
+  fi
+
   printf '%s\n' 'empty' > .env
   git add .env
   if bash tooling/preflight.sh >/tmp/preflight-env.out 2>/tmp/preflight-env.err; then
